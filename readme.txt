@@ -1,0 +1,1 @@
+scrapy crawl <spider_name> -o items.json
