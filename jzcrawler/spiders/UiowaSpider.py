@@ -9,9 +9,11 @@ class UiowaSpider(CrawlSpider):
     allowed_domains = ["uiowa.edu"]
     start_urls = ["http://www.uiowa.edu"]
     rules = (
-        Rule(SgmlLinkExtractor(allow=('.*.uiowa.edu', )),
+        #Rule(SgmlLinkExtractor(allow=('.*.uiowa.edu', ), deny=('_ticket=', 'infohawk.uiowa.edu:80/F/', '.*.lib.uiowa.edu', 'utm_source=', 'utm_campaign=', 'utm_medium=', )),
+        Rule(SgmlLinkExtractor(allow=('.*.uiowa.edu', ), deny=('_ticket=', 'infohawk.uiowa.edu:80/F/', '.*.lib.uiowa.edu', 'utm_source=', 'utm_campaign=', 'utm_medium=', 'http://tippie.uiowa.edu/fulltimemba/calendar/', )),
              callback="parse_items",
              follow=True),
+             #follow=False),
     )
 
     def parse_items(self, response):
